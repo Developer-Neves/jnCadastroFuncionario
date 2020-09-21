@@ -6,13 +6,15 @@ import com.jdneves.spring.domain.Departamento;
 
 public interface DepartamentoService {
 
-	void salvar(Departamento cargo);
+	void salvar(Departamento departamento);
 	
-	void editar(Departamento cargo);
+	void editar(Departamento departamento);
 	
 	void excluir(Long id);
 	
 	Departamento buscarPorId(Long id);
 	
 	List<Departamento> buscarTodos();
+
+	boolean departamentoTemCargos(Long id);
 }

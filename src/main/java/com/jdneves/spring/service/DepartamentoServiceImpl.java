@@ -23,7 +23,7 @@ public class DepartamentoServiceImpl implements DepartamentoService{
 
 	@Override
 	public void editar(Departamento departamento) {
-		dao.upadate(departamento);
+		dao.update(departamento);
 	}
 
 	@Override
@@ -39,6 +39,14 @@ public class DepartamentoServiceImpl implements DepartamentoService{
 	@Override @Transactional(readOnly = true)
 	public List<Departamento> buscarTodos() {
 		return dao.findAll();
+	}
+
+	@Override
+	public boolean departamentoTemCargos(Long id) {
+		if(buscarPorId(id).getCargos().isEmpty()) {
+			return false;
+		}
+		return true;
 	}
 
 }

@@ -23,7 +23,7 @@ public class FuncionarioServiceImpl implements FuncionarioService{
 
 	@Override
 	public void editar(Funcionario funcionario) {
-		dao.upadate(funcionario);
+		dao.update(funcionario);
 	}
 
 	@Override

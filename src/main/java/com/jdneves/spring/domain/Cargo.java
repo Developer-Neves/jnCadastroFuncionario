@@ -9,12 +9,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@SuppressWarnings("serial")
-@Entity
-@Table(name = "CARGOS")
+@SuppressWarnings("serial") // só para esconder warnings
+@Entity                     // Informar para o Spring que essa classe é uma entidade
+@Table(name = "CARGOS")     // Nome da entidade no banco
 public class Cargo extends AbstractEntity<Long> {
 	
-	@Column(name = "nome", nullable = false, unique = true, length = 60)
+	@Column(name = "nome", nullable = false, unique = true, length = 60) // Nome da coluna (atributo) e configuração que será definido no DB
 	private String nome;
 	
 	@ManyToOne
