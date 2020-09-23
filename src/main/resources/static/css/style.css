@@ -6,8 +6,7 @@ html, body {
 }
 
 body {
-	padding-top: 56px;
-	padding-left: 0;
+	padding: 55px 2px 2px 1px;	
 } 
 
 /*
@@ -25,11 +24,12 @@ body {
 .layout-content {
     width: 100%;
     padding-top: 0px;
+    margin: 3px 5px 5px 5px;
 }
 
 .container {
 	width: 100%;
-	padding-top: 20px;
+	padding: 20px 0 60px 0;
 }
 
 /*
@@ -88,12 +88,13 @@ body {
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
 	color: #fff;
 	background-color: #1e94d2;
+	border-radius: 4px;
+	margin: 2px 3px 2px 3px;
 }
 
 /*
  * toogle do navbar do menu
  */ 
-
 .navbar-toggle {
     display: inline-block;
     margin-left: 10px;
@@ -110,6 +111,7 @@ body {
 	margin: 0;
 	height: 50px;
 	border-top: 1px solid #eeeeee;
+	background-color: rgba( 0, 0, 0, 0.3);
 }
 
 .footer-copy {

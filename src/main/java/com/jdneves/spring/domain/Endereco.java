@@ -26,7 +26,7 @@ public class Endereco extends AbstractEntity<Long> {
 	@Column(nullable = false, length = 5)
 	private Integer numero;
 	
-	//não foi preciso informar a anotaão porque será a cofiguração padrão
+	//não foi preciso informar a anotação porque será a cofiguração padrão
 	private String complemento;
 
 	public String getLogradouro() {
