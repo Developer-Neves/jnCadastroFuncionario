@@ -1,5 +1,7 @@
 package com.jdneves.spring.service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,29 @@ public class FuncionarioServiceImpl implements FuncionarioService{
 	@Override @Transactional(readOnly = true)
 	public List<Funcionario> buscarTodos() {
 		return dao.findAll();
+	}
+
+	@Override @Transactional(readOnly = true)
+	public List<Funcionario> buscarPorNome(String nome) {
+		return dao.findByName(nome);
+	}
+
+	@Override @Transactional(readOnly = true)
+	public List<Funcionario> buscarPorCargo(Long id) {
+		return dao.findByCargoId(id);
+	}
+
+	@Override @Transactional(readOnly = true)
+	public List<Funcionario> buscarPorData(LocalDate entrada, LocalDate saida) {
+		if(entrada != null && saida != null) {
+			return dao.findByDataEntradaSaida(entrada, saida);
+		} else if (entrada != null){
+			return dao.findByDataEntrada(entrada);
+		} else if (saida != null){
+			return dao.findByDataSaida(saida);
+		} else {		
+		   return new ArrayList<>();
+		}
 	}
 
 }
