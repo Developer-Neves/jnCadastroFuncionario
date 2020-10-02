@@ -3,6 +3,7 @@ package com.jdneves.spring.service;
 import java.util.List;
 
 import com.jdneves.spring.domain.Cargo;
+import com.jdneves.spring.util.PaginacaoUtil;
 
 public interface CargoService {
 
@@ -17,4 +18,6 @@ public interface CargoService {
 	List<Cargo> buscarTodos();
 
 	boolean cargoTemFuncionarios(Long id);
+	
+	PaginacaoUtil<Cargo> buscarPorPagina(Integer pagina, String ordenacao);
 }

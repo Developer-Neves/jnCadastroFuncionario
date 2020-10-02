@@ -3,6 +3,7 @@ package com.jdneves.spring.dao;
 import java.util.List;
 
 import com.jdneves.spring.domain.Cargo;
+import com.jdneves.spring.util.PaginacaoUtil;
 
 public interface CargoDao {
 
@@ -16,4 +17,5 @@ public interface CargoDao {
 	
 	List<Cargo> findAll();
 	
+	PaginacaoUtil<Cargo> buscaPaginada(Integer pagina, String ordenacao);	
 }

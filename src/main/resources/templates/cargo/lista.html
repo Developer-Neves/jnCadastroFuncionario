@@ -27,13 +27,19 @@
 		                    <thead>
 		                    <tr>
 		                        <th>#</th>
-		                        <th>Cargo</th>
+		                        <th>
+		                            <a class="" th:href="@{/cargos/listar(page=${pageCargo.pagina}, ordena=DESC)}" tabindex="-1" aria-disabled="true">
+		                              <span class="oi oi-arrow-bottom"></span></a>
+		                                 Cargo
+		                            <a class="" th:href="@{/cargos/listar(page=${pageCargo.pagina}, ordena=ASC)}" tabindex="-1" aria-disabled="true">
+		                              <span class="oi oi-arrow-top"></span></a>
+		                        </th>
 		                        <th>Departamento</th>
 		                        <th>Ação</th>
 		                    </tr>
 		                    </thead>
 		                    <tbody>
-		                    <tr th:each="c : ${cargos}">
+		                    <tr th:each="c : ${pageCargo.registros}">
 		                        <td th:text="${c.id}"> </td>
 		                        <td th:text="${c.nome}"> </td>
 		                        <td th:text="${c.departamento.nome}"> </td>
@@ -50,6 +56,33 @@
 	                   
 	                    </tbody>
 	                </table>
+	        <!-- Componente de paginação -->
+	                <nav aria-label="Page navigation example">
+					  <ul class="pagination justify-content-center">
+					  
+					  	<li class="page-item">
+					      <a class="page-link" th:href="@{/cargos/listar(page=${1}, ordena=${pageCargo.ordenacao})}" tabindex="-1" aria-disabled="true">Primeira página</a>
+					    </li>
+					  
+					    <li th:class="${pageCargo.pagina == 1} ? 'page-item disabled' : 'page-item'">
+					      <a class="page-link" th:href="@{/cargos/listar(page=${pageCargo.pagina - 1}, ordena=${pageCargo.ordenacao})}" tabindex="-1" aria-disabled="true">Voltar</a>
+					    </li>
+					    
+					    <li class="page-item">
+					        <span class="page-link" th:text="|${pageCargo.pagina} de ${pageCargo.totalDePaginas}|"></span>
+					     </li>  
+					      
+					    <li th:class="${pageCargo.pagina == pageCargo.totalDePaginas} ? 'page-item disabled' : 'page-item'">
+					      <a class="page-link" th:href="@{/cargos/listar(page=${pageCargo.pagina + 1}, ordena=${pageCargo.ordenacao})}">Próxima</a>
+					    </li>
+					    
+    				  	<li class="page-item">
+					      <a class="page-link" th:href="@{/cargos/listar(page=${pageCargo.totalDePaginas}, ordena=${pageCargo.ordenacao})}" tabindex="-1" aria-disabled="true">Última página</a>
+					    </li>
+					    
+					  </ul>
+					</nav>
+					
 	            </div>
 	        </div>
 	        

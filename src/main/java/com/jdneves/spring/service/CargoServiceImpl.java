@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jdneves.spring.dao.CargoDao;
 import com.jdneves.spring.domain.Cargo;
+import com.jdneves.spring.util.PaginacaoUtil;
 
 @Service
 @Transactional(readOnly = false)
@@ -47,6 +48,12 @@ public class CargoServiceImpl implements CargoService{
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public PaginacaoUtil<Cargo> buscarPorPagina(Integer pagina, String ordenacao) {
+		
+		return dao.buscaPaginada(pagina, ordenacao);
 	}
 
 }

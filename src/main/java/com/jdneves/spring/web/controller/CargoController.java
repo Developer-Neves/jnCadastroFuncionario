@@ -1,6 +1,7 @@
 package com.jdneves.spring.web.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -13,12 +14,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jdneves.spring.domain.Cargo;
 import com.jdneves.spring.domain.Departamento;
 import com.jdneves.spring.service.CargoService;
 import com.jdneves.spring.service.DepartamentoService;
+import com.jdneves.spring.util.PaginacaoUtil;
 
 @Controller
 @RequestMapping("/cargos")
@@ -36,8 +39,16 @@ public class CargoController {
 	}
 	
 	@GetMapping("/listar")
-	public String listar(ModelMap model) {
-		model.addAttribute("cargos", cargoService.buscarTodos());
+	public String listar(ModelMap model, 
+			             @RequestParam("page") Optional<Integer> page,
+		 				 @RequestParam("ordena") Optional<String> ordena) {
+		
+		Integer paginaAtual = page.orElse(1);
+		String ordem = ordena.orElse("ASC");
+		
+		PaginacaoUtil<Cargo> pageCargo = cargoService.buscarPorPagina(paginaAtual, ordem);
+		
+		model.addAttribute("pageCargo", pageCargo);
 		return "cargo/lista";
 	}
 	
